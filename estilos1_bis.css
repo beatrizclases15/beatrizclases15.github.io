@@ -1,0 +1,157 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+main {
+  color: gainsboro;
+  margin: 0 auto;
+  height: 100vh; /* Especificamos un mínimo de altura con vh (Viewport Height). 
+  Esto hará que aunque no tengamos mucho contenido en nuestra sección de contenido nos aseguramos que el footer queda abajo*/
+
+  display: grid; /*El contenedor principal main se mostrara como una cuadricula*/
+
+  grid-column-gap: 1em; /*Introducimos espacio entre col*/
+  grid-row-gap: 2em; /*Introducimos espacio entre filas*/
+  
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows:
+    auto
+    1fr
+    auto;
+}
+
+body{
+  background-color: grey;
+}
+header {
+  grid-area: my-header; /*Le damos un nombre para que ocupe distintas columnas*/
+  background-color: blueviolet;
+}
+
+nav {
+  grid-area: my-nav;
+  background-color: cornflowerblue;
+}
+
+
+
+
+
+
+aside {
+  grid-area: my-aside;
+  background-color: darkmagenta;
+  padding: 1em;
+}
+
+section {
+  grid-area: my-section;
+  background-color: indigo;
+  padding: 1em;
+}
+
+footer {
+  grid-area: my-footer;
+  background-color: darkorchid;
+}
+
+/*--------------------------------IMAGENES --------------------------------------------*/
+.imgpeq {
+  background-image: ("ciudad.jpg");
+  background-color: #aaa;
+  width: 100%;
+  height: 15%;
+  padding: 0.4em;
+}
+
+/*--------------------------------ENLACES --------------------------------------------*/
+ul{
+  display: flex;
+  justify-content: center;
+  list-style:none;
+  margin: 0;
+  padding: 0;
+  
+}
+li{
+  padding: 15px;
+  text-align: center;
+
+}
+li:hover{
+  background-color: rgb(44, 41, 71);
+  color: white;
+  font-size: 1.3em;
+}
+
+
+
+
+
+/*-----------------------------------USO ME DE MEDIOS-- Tenemos en cuenta diseño movil primero--------------*/
+
+
+/*PARA DISPOSITIVOS MAYORES DE 1000px*/
+@media (min-width: 1001px) {
+   /* este bloque se ejecutará sólo por encima de los 1001px de ancho */
+  main {
+    grid-template-columns: 200px 1fr 200px; /*Especificamos el numero de columnas y su medida*/
+    grid-template-rows: /*ESpecificamos el número de filas y su tamaño*/
+      100px
+      1fr
+      100px;
+    grid-template-areas:
+      "my-header my-header my-header"
+      "my-nav my-section my-aside"
+      "my-footer my-footer my-footer";
+  }
+  ul{
+    flex-direction: column;
+  }
+}
+
+/*PARA DISPOSITIVOS entre 600px y 1000px*/
+
+@media (min-width: 600px) and (max-width: 1000px) {
+
+    main {
+      grid-template-columns: 1fr 2fr ;
+      grid-template-rows: 150px
+        100px
+        1fr
+        100px;
+      grid-template-areas: 
+        "my-header my-header "
+        "my-nav my-nav "
+        "my-aside my-section "
+        "my-footer my-footer "
+    }
+  }
+
+  /*PARA DISPOSITIVOS entre 100px y 1000px*/
+  
+  @media (min-width: 100px) and (max-width: 600px) {
+
+    main {
+      grid-template-columns: 1fr ;
+      grid-template-rows: 150px
+        auto
+        1fr
+        1fr
+        100px;
+      grid-template-areas: 
+        "my-header "
+        "my-nav "
+        "my-aside "
+        "my-section"
+        "my-footer "
+    }
+    ul{
+      flex-direction: column;
+    }
+  }
+  
+  
